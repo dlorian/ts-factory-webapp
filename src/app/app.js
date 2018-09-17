@@ -25,10 +25,7 @@ const TsOptions = {
             }
 
             if(this.errors.length == 0) {
-                console.log('emit create ts event');
                 socket.emit('ts-create', this.$data);
-            } else {
-                console.log('ts-options with errors');
             }
         }
     }
@@ -44,10 +41,7 @@ const TsResult = {
 
     created() {
         socket.on('ts-data', data => this.result += data);
-        socket.on('ts-error', err => {
-            console.dir(err);
-            this.result = err;
-        });
+        socket.on('ts-error', err => this.result = err);
     },
 
     methods: {

@@ -1,24 +1,15 @@
+require('dotenv').config({ path: '..' });
+
 const express = require('express');
 const app = express();
 const http = require('http').Server(app);
-const io = require('socket.io')(http);
-const tsFactory = require('@dlorian/ts-factory');
 
-app.use(express.static('app'));
+const socket = require('./socket.js');
 
-io.on('connection', (socket) => {
-    socket.on('ts-create', (options) => {
-        try {
-            console.log('Create timeseries for options {}', options);
-            
-            tsFactory.stream(options)
-                .on('data', data => socket.emit('ts-data', data))
-                .on('error', err =>  socket.emit('ts-error', err));
-        } catch (err) {
-            console.error('error occured while stream ts data', err);
-            socket.emit('ts-error', err.message);
-        }
-    });
-});
+const port = process.env.port || 3000;
 
-http.listen(3000, () =>  console.log('ts-factory-webapp is listening on *:3000'));
+app.use(express.static(__dirname + '/app'));
+
+socket.registerSocket(http);
+
+http.listen(port, () => console.log(`ts-factory-webapp is listening on localhost:${port}`));
