@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Timeseries Factory Webapp</title>
+    <link rel='stylesheet' type='text/css' href='app.css'>
+</head>
+
+<body>
+    <script src='https://unpkg.com/vue/dist/vue.js'></script>
+    <script src='/socket.io/socket.io.js'></script>
+
+    <div id='app'>
+        <my-ts-options></my-ts-options>
+        <my-ts-result></my-ts-result>
+    </div>
+
+    <template id='ts-options-template'>
+        <div class='group realtimedb'>
+            <h2>Timeseries Options</h2>
+            <div class='input-group half left'>
+                <label>Startatum</label>
+                <input type='text' v-model='start' placeholder="yyyy-mm-dd" />
+            </div>
+            <div class='input-group half'>
+                <label>Enddatum</label>
+                <input type='text' v-model='end' placeholder="yyyy-mm-dd" />
+            </div>
+            <div class='input-group half left'>
+                <label>Granularität</label>
+                <select v-model="granularity">
+                    <option>DAILY</option>
+                    <option>HOURLY</option>
+                    <option>QUARTER_HOURLY</option>
+                </select>
+            </div>
+            <div class='input-group half'>
+                <label>Format</label>
+                <select v-model="format">
+                    <option>json</option>
+                    <option>xml</option>
+                </select>
+            </div>
+            <div class='input-group half left'>
+                <label>DST Mode</label>
+                <select v-model="dst">
+                    <option>2424</option>
+                    <option>2325</option>
+                </select>
+            </div>
+            <button class='half left' @click='create()'>Create</button>
+            <div class='input-group half left'>
+                <p v-if="errors.length">
+                    <b>Please correct the following error(s):</b>
+                    <ul>
+                        <li v-for="error in errors">{{ error }}</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+    </template>
+
+    <template id='ts-result-template'>
+        <div class='group realtimedb'>
+            <h2>Timeseries Result</h2>
+            <div class='input-group full'>
+                <textarea v-model='result' placeholder='Ergebnis'></textarea>
+            </div>
+            <div class='input-group half left'>
+                <button class='half left' @click='clear()'>Clear</button>
+            </div>
+        </div>
+    </template>
+
+    <script src='./app.js'></script>
+</body>
+
+</html>

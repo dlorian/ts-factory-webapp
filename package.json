@@ -1,0 +1,28 @@
+{
+  "name": "@dlorian/ts-factory-webapp",
+  "version": "0.0.1",
+  "description": "Simple webapp for creatin samle time series data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dlorian/ts-factory-webapp.git"
+  },
+  "author": "dlorian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dlorian/ts-factory-webapp/issues"
+  },
+  "homepage": "https://github.com/dlorian/ts-factory-webapp#readme",
+  "dependencies": {
+    "@dlorian/ts-factory": "file:../ts-factory",
+    "express": "^4.16.3",
+    "socket.io": "^2.1.1",
+    "vue": "^2.5.17"
+  },
+  "devDependencies": {
+    "eslint": "^5.6.0"
+  }
+}
