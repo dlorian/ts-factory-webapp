@@ -5,8 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "docker:build": "docker build -t dlorian/ts-factory-webapp:latest .",
-    "docker:run": "docker run -t dlorian/ts-factory-webapp"
+    "docker:build": "docker build -t dlorian/ts-factory-webapp ."
   },
   "repository": {
     "type": "git",
