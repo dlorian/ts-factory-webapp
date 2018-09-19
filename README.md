@@ -15,14 +15,14 @@ In order to run the the dockerized application you need to install _Docker_. If 
 
 First clone this repository to your local machine. Afterwards change into your project directory and run `npm install` to download all required dependencies.
 
-```
-cd ./$(project-root)
+```bash
+cd ./${project-root}
 npm install
 ```
 
 ### Run it with Node
 If you want to run it directly as a node application on you machine just type `npm start`
-```
+```bash
 npm start
 ```
 
@@ -31,12 +31,12 @@ This will automatically start the application.  When the application has started
 ### Run it with Docker
 
 If you want to run it withing a Docker containter you frist need to build it.
-```
+```bash
 npm run docker:build
 ```
 
 This will automatically build a Docker container for you. After that you can run it with
 
-```
+```bash
 docker run -p ${your_port_of_choice}:3000 -d dlorian/ts-factory-webapp
 ```
